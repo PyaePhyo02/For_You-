@@ -1,0 +1,855 @@
+/* ═══════════════════════════════════════
+   style.css — Heyy Cuttie Pie
+═══════════════════════════════════════ */
+
+/* ─── Variables ─── */
+:root {
+  --rose:   #c2185b;
+  --blush:  #f8bbd0;
+  --petal:  #fce4ec;
+  --cream:  #fff9fb;
+  --sage:   #1b5e20;
+  --sage-m: #2e7d32;
+  --white:  #ffffff;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(160deg, #fce4ec 0%, #f8bbd0 50%, #fce4ec 100%);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ─── Flora canvas ─── */
+#flora-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.flora {
+  position: absolute;
+  bottom: -60px;
+  opacity: 0;
+  animation: floatUp var(--dur) ease-in var(--delay) infinite;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+/* ─── Pages ─── */
+.page {
+  display: none;
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.page.active {
+  display: flex;
+  animation: pageIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─── Back button ─── */
+.back-btn {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--rose);
+  border: 1.5px solid var(--blush);
+  border-radius: 60px;
+  padding: 10px 22px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(194, 24, 91, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  z-index: 20;
+}
+
+.back-btn:hover {
+  background: var(--white);
+  transform: translateX(-3px);
+  box-shadow: 0 4px 18px rgba(194, 24, 91, 0.20);
+}
+
+.back-btn:active {
+  transform: scale(0.96);
+}
+
+/* ─── Glass card ─── */
+.card {
+  background: rgba(255, 255, 255, 0.60);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 32px;
+  padding: 52px 44px 44px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow:
+    0 8px 40px rgba(194, 24, 91, 0.10),
+    0 2px 8px rgba(194, 24, 91, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* ─── Photo ring ─── */
+.photo-ring {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blush), var(--rose));
+  padding: 4px;
+  box-shadow: 0 4px 24px rgba(194, 24, 91, 0.22);
+  animation: floatBob 4s ease-in-out infinite;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--white);
+  display: block;
+  background: var(--cream);
+}
+
+.photo-fallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blush), #f48fb1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52px;
+  border: 3px solid var(--white);
+}
+
+/* ─── Typography ─── */
+.display {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 5vw, 40px);
+  font-weight: 700;
+  color: var(--sage);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(16px, 3vw, 21px);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--sage-m);
+  margin-bottom: 32px;
+  line-height: 1.55;
+}
+
+.hint {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--sage-m);
+  margin-bottom: 20px;
+}
+
+/* ─── Decorative rule ─── */
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto 24px;
+  width: 80%;
+}
+
+.rule::before,
+.rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--blush), transparent);
+}
+
+.rule span { font-size: 18px; }
+
+/* ─── Decorative corners ─── */
+.deco {
+  position: absolute;
+  font-size: 34px;
+  opacity: 0.5;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.deco.tl { top: 20px;    left: 20px;  }
+.deco.tr { top: 20px;    right: 20px; }
+.deco.bl { bottom: 20px; left: 20px;  }
+.deco.br { bottom: 20px; right: 20px; }
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--rose), #e91e8c);
+  color: var(--white);
+  border: none;
+  border-radius: 60px;
+  padding: 15px 38px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(194, 24, 91, 0.30);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(194, 24, 91, 0.40);
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--rose);
+  border: 1.5px solid var(--blush);
+  box-shadow: 0 2px 12px rgba(194, 24, 91, 0.10);
+}
+
+.btn-ghost:hover { background: var(--white); }
+
+.btn-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* YES button pulses */
+#yesBtn {
+  animation: pulse 2s ease-in-out infinite;
+  transition: font-size 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              padding  0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pulse { animation: pulse 2s ease-in-out infinite; }
+
+/* NO button — inline by default, becomes fixed after first click */
+#noBtn {
+  transition:
+    top      0.5s cubic-bezier(0.34, 0.5, 0.64, 1),
+    left     0.5s cubic-bezier(0.34, 0.5, 0.64, 1),
+    opacity  0.3s;
+}
+
+#noBtn.floating {
+  position: fixed;
+  z-index: 9999;
+}
+
+/* ─── Envelope button ─── */
+.env-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: 8px auto 4px;
+  animation: envFloat 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 6px 20px rgba(194, 24, 91, 0.25));
+  transition: transform 0.2s;
+}
+
+.env-btn:hover { transform: scale(1.08) rotate(-3deg); }
+
+.env-svg {
+  width: 160px;
+  height: auto;
+  display: block;
+}
+
+.anim-pulse { animation: pulse 2s ease-in-out infinite; }
+
+/* ─── Love letter overlay ─── */
+#letter-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  background: rgba(194, 24, 91, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 20px;
+}
+
+#letter-overlay.open { display: flex; }
+
+.letter-box {
+  background: linear-gradient(155deg, #fff9fb 0%, #fce4ec 55%, #fff0f5 100%);
+  border: 2px solid rgba(194, 24, 91, 0.22);
+  border-radius: 28px;
+  max-width: 480px;
+  width: 100%;
+  /* Fixed height so it doesn't grow past the screen */
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow:
+    0 20px 80px rgba(194, 24, 91, 0.20),
+    0 4px 16px rgba(0, 0, 0, 0.05);
+  animation: letterPop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Close button */
+.letter-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--rose);
+  cursor: pointer;
+  transition: transform 0.2s;
+  line-height: 1;
+  z-index: 5;
+}
+
+.letter-close:hover { transform: scale(1.2) rotate(90deg); }
+
+/* Fixed header inside popup — never scrolls */
+.letter-header {
+  padding: 36px 40px 0;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.letter-stamp {
+  display: block;
+  font-size: 36px;
+  margin-bottom: 12px;
+  animation: floatBob 3s ease-in-out infinite;
+}
+
+.letter-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--sage);
+  margin-bottom: 14px;
+}
+
+.letter-rule {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--rose), transparent);
+  margin: 0 auto 20px;
+}
+
+/* Scrollable body area */
+.letter-scroll {
+  overflow-y: auto;
+  flex: 1;
+  padding: 0 40px 36px;
+  text-align: center;
+
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--blush) transparent;
+}
+
+.letter-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.letter-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.letter-scroll::-webkit-scrollbar-thumb {
+  background: var(--blush);
+  border-radius: 10px;
+}
+
+/* Fade hint at bottom to show there's more to scroll */
+.letter-scroll::after {
+  content: '';
+  display: block;
+  height: 1px;
+}
+
+.letter-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: #4a1c2e;
+  line-height: 2;
+  text-align: left;
+}
+
+.letter-sig {
+  margin-top: 26px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--rose);
+  text-align: right;
+}
+
+.letter-flowers {
+  font-size: 20px;
+  letter-spacing: 6px;
+  margin-top: 18px;
+}
+
+/* ─── Confetti ─── */
+.confetti-piece {
+  position: fixed;
+  width: 9px;
+  height: 13px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 3000;
+  animation: confettiFall var(--dur) ease-in forwards;
+}
+
+/* ═══════════════════════════════════════
+   Keyframe animations
+═══════════════════════════════════════ */
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0);     }
+  50%      { transform: translateY(-10px); }
+}
+
+@keyframes floatUp {
+  0%   { opacity: 0;   transform: translateY(0)      rotate(0deg)   scale(0.8); }
+  10%  { opacity: 0.8; }
+  85%  { opacity: 0.6; }
+  100% { opacity: 0;   transform: translateY(-110vh) rotate(360deg) scale(1.1); }
+}
+
+@keyframes envFloat {
+  0%, 100% { transform: translateY(0)     rotate(-2deg); }
+  50%      { transform: translateY(-14px) rotate(3deg);  }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(194, 24, 91, 0.30); }
+  50%      { box-shadow: 0 4px 32px rgba(194, 24, 91, 0.55); }
+}
+
+@keyframes letterPop {
+  from { opacity: 0; transform: scale(0.5) rotate(-6deg); }
+  to   { opacity: 1; transform: scale(1)   rotate(0deg);  }
+}
+
+@keyframes confettiFall {
+  0%   { opacity: 1; transform: translateY(-10px) rotate(0deg);   }
+  100% { opacity: 0; transform: translateY(110vh) rotate(800deg); }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 480px) {
+  .card          { padding: 36px 24px 32px; }
+  .photo-ring    { width: 110px; height: 110px; }
+  .letter-header { padding: 28px 24px 0; }
+  .letter-scroll { padding: 0 24px 28px; }
+  .back-btn      { top: 14px; left: 14px; padding: 8px 16px; font-size: 13px; }
+}
+
+
+/* ═══════════════════════════════════════
+   BIRTHDAY PAGE — Additional styles
+═══════════════════════════════════════ */
+
+/* ─── Birthday card (wider, taller) ─── */
+.bday-card {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1.5px solid rgba(255, 255, 255, 0.88);
+  border-radius: 36px;
+  padding: 44px 40px 40px;
+  max-width: 560px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  box-shadow:
+    0 8px 48px rgba(194, 24, 91, 0.13),
+    0 2px 8px rgba(194, 24, 91, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  z-index: 10;
+}
+
+/* ─── Top badge ─── */
+.bday-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #f48fb1, #c2185b);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  border-radius: 60px;
+  padding: 6px 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 12px rgba(194, 24, 91, 0.28);
+  animation: badgePop 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.2s both;
+}
+
+/* ─── Birthday title ─── */
+.bday-title {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(30px, 6vw, 52px);
+  color: var(--rose);
+  line-height: 1.1;
+  margin-bottom: 6px;
+  animation: titleSlide 0.8s cubic-bezier(0.22,1,0.36,1) 0.3s both;
+  text-shadow: 0 2px 16px rgba(194,24,91,0.18);
+}
+
+.bday-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 4vw, 30px);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--sage);
+  margin-bottom: 18px;
+  animation: titleSlide 0.8s cubic-bezier(0.22,1,0.36,1) 0.45s both;
+}
+
+/* ─── Cake wrapper ─── */
+.cake-wrap {
+  margin: 8px auto 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.cake-gif {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 24px;
+  filter: drop-shadow(0 4px 16px rgba(194,24,91,0.22));
+  animation: floatBob 3.5s ease-in-out infinite;
+}
+
+.cake-svg-wrap {
+  animation: floatBob 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 4px 16px rgba(194,24,91,0.22));
+}
+
+.cake-svg {
+  width: 160px;
+  height: 160px;
+}
+
+/* Flame flicker */
+.flame {
+  transform-origin: center bottom;
+  animation: flicker 0.9s ease-in-out infinite alternate;
+}
+.flame.f2 { animation-delay: 0.3s; }
+.flame-inner {
+  transform-origin: center bottom;
+  animation: flicker 0.7s ease-in-out infinite alternate;
+  opacity: 0.9;
+}
+.flame-inner.f2 { animation-delay: 0.15s; }
+
+@keyframes flicker {
+  0%   { transform: scaleX(1)   scaleY(1)    rotate(-3deg); opacity: 1;   }
+  50%  { transform: scaleX(0.8) scaleY(1.15) rotate(3deg);  opacity: 0.9; }
+  100% { transform: scaleX(1.1) scaleY(0.9)  rotate(-2deg); opacity: 1;   }
+}
+
+/* ─── Birthday message ─── */
+.bday-msg {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(15px, 2.5vw, 18px);
+  font-style: italic;
+  color: #4a1c2e;
+  line-height: 1.85;
+  margin-bottom: 22px;
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+
+.bday-msg em {
+  color: var(--rose);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ─── Tags ─── */
+.bday-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s ease 0.75s both;
+}
+
+.tag {
+  background: rgba(244, 143, 177, 0.18);
+  border: 1px solid rgba(244, 143, 177, 0.45);
+  color: var(--rose);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 60px;
+  padding: 6px 14px;
+  letter-spacing: 0.02em;
+}
+
+/* ─── CTA section ─── */
+.bday-cta-wrap {
+  border-top: 1px solid rgba(244, 143, 177, 0.3);
+  padding-top: 24px;
+  margin-top: 4px;
+  animation: fadeUp 0.8s ease 0.9s both;
+}
+
+.bday-cta-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--sage-m);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+/* Birthday CTA button — slightly different style */
+.btn-bday {
+  background: linear-gradient(135deg, #c2185b, #880e4f);
+  font-size: 16px;
+  padding: 16px 40px;
+  gap: 12px;
+  box-shadow: 0 6px 28px rgba(194,24,91,0.38);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.btn-bday:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px rgba(194,24,91,0.48);
+}
+
+.btn-arrow {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.btn-bday:hover .btn-arrow { transform: translateX(4px); }
+
+/* ─── Shooting stars ─── */
+.stars-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--rose);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.star::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0;
+  width: 60px; height: 1px;
+  background: linear-gradient(to left, rgba(194,24,91,0.6), transparent);
+  transform: translateY(-50%);
+}
+
+.s1 { top: 12%; left: -10%; animation: shoot 4s ease-in 0.5s infinite; }
+.s2 { top: 28%; left: -10%; animation: shoot 4s ease-in 1.8s infinite; }
+.s3 { top: 50%; left: -10%; animation: shoot 5s ease-in 0.2s infinite; }
+.s4 { top: 70%; left: -10%; animation: shoot 4.5s ease-in 2.5s infinite; }
+.s5 { top: 18%; left: -10%; animation: shoot 3.5s ease-in 3.1s infinite; }
+.s6 { top: 85%; left: -10%; animation: shoot 5s ease-in 1.2s infinite; }
+
+@keyframes shoot {
+  0%   { opacity: 0; transform: translate(0, 0); }
+  5%   { opacity: 1; }
+  80%  { opacity: 0.8; }
+  100% { opacity: 0; transform: translate(110vw, -20px); }
+}
+
+/* ─── Sparkle ring around card ─── */
+.bday-sparkles {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 580px; height: 580px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bday-sparkles span {
+  position: absolute;
+  font-size: 22px;
+  animation: orbitSpark 8s linear infinite;
+  opacity: 0.7;
+}
+
+.bday-sparkles span:nth-child(1) { animation-delay: 0s;    top: 0%;   left: 50%; }
+.bday-sparkles span:nth-child(2) { animation-delay: -1s;   top: 14%;  left: 85%; }
+.bday-sparkles span:nth-child(3) { animation-delay: -2s;   top: 50%;  left: 100%;}
+.bday-sparkles span:nth-child(4) { animation-delay: -3s;   top: 85%;  left: 85%; }
+.bday-sparkles span:nth-child(5) { animation-delay: -4s;   top: 100%; left: 50%; }
+.bday-sparkles span:nth-child(6) { animation-delay: -5s;   top: 85%;  left: 14%; }
+.bday-sparkles span:nth-child(7) { animation-delay: -6s;   top: 50%;  left: 0%;  }
+.bday-sparkles span:nth-child(8) { animation-delay: -7s;   top: 14%;  left: 14%; }
+
+@keyframes orbitSpark {
+  0%   { transform: scale(0.8); opacity: 0.4; }
+  50%  { transform: scale(1.3); opacity: 1;   }
+  100% { transform: scale(0.8); opacity: 0.4; }
+}
+
+/* ─── Birthday page extra keyframes ─── */
+@keyframes badgePop {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1);   }
+}
+
+@keyframes titleSlide {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ─── Responsive birthday ─── */
+@media (max-width: 480px) {
+  .bday-card { padding: 32px 22px 32px; }
+  .bday-sparkles { width: 380px; height: 380px; }
+  .cake-svg, .cake-gif { width: 130px; height: 130px; }
+}
+
+
+/* ═══════════════════════════════════════
+   IMAGE / PHOTO UPDATES
+═══════════════════════════════════════ */
+
+/* ─── Tulip full-page background (birthday page) ─── */
+.tulip-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/tulip.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+/* ─── Ribbon corner decorations ─── */
+.ribbon-deco {
+  position: absolute;
+  width: 90px;
+  height: auto;
+  opacity: 0.88;
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 2px 8px rgba(194,24,91,0.12));
+}
+
+.ribbon-deco.tl {
+  top: 10px;
+  left: 10px;
+  transform: rotate(-15deg);
+}
+
+.ribbon-deco.tr {
+  top: 10px;
+  right: 10px;
+  transform: rotate(15deg) scaleX(-1);
+}
+
+/* Small ribbon used inside .deco span on p1 */
+.deco-ribbon {
+  width: 52px;
+  height: auto;
+  opacity: 0.85;
+  display: block;
+  filter: drop-shadow(0 1px 4px rgba(194,24,91,0.15));
+}
+
+/* ─── Sticker-style photo (no circle, transparent bg) ─── */
+.sticker-wrap {
+  width: 150px;
+  height: 160px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: floatBob 4s ease-in-out infinite;
+  filter: drop-shadow(0 6px 18px rgba(194,24,91,0.20));
+}
+
+.sticker-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ─── Regular circle photo ring (pages 2, 4, 5) ─── */
+/* already defined above — no change needed */
+
+@media (max-width: 480px) {
+  .ribbon-deco { width: 64px; }
+  .sticker-wrap { width: 120px; height: 130px; }
+}

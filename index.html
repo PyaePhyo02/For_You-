@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Cuttie Pie 🎂</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Pacifico&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div id="flora-canvas"></div>
+  <div id="confetti"></div>
+
+  <!-- ══════════════════════════════
+       PAGE 0 — BIRTHDAY
+  ══════════════════════════════ -->
+  <section class="page active" id="p0">
+
+    <!-- Full-page tulip background -->
+    <div class="tulip-bg"></div>
+
+    <!-- Shooting stars -->
+    <div class="stars-wrap">
+      <div class="star s1"></div>
+      <div class="star s2"></div>
+      <div class="star s3"></div>
+      <div class="star s4"></div>
+      <div class="star s5"></div>
+      <div class="star s6"></div>
+    </div>
+
+    <!-- Ribbon corner decorations -->
+    <img src="images/ribbon.png" class="ribbon-deco tl" alt="">
+    <img src="images/ribbon.png" class="ribbon-deco tr" alt="">
+
+    <!-- Orbit sparkles -->
+    <div class="bday-sparkles">
+      <span>✨</span><span>⭐</span><span>✨</span><span>⭐</span>
+      <span>✨</span><span>⭐</span><span>✨</span><span>⭐</span>
+    </div>
+
+    <div class="bday-card">
+      <div class="bday-badge">🎉 Special Day 🎉</div>
+
+      <h1 class="bday-title">Happy Birthday</h1>
+      <h2 class="bday-name">My Cuttie Pie&nbsp;🎀</h2>
+
+      <div class="rule"><span>🌸</span></div>
+
+      <!-- Cake: swap src to your own GIF → images/cake.gif -->
+      <div class="cake-wrap">
+        <div class="cake-svg-wrap">
+          <svg class="cake-svg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="80" cy="138" rx="64" ry="10" fill="#f8bbd0" opacity="0.5" />
+            <rect x="20" y="98" width="120" height="40" rx="14" fill="#f48fb1" />
+            <rect x="20" y="98" width="120" height="14" rx="7" fill="#f06292" />
+            <rect x="36" y="62" width="88" height="40" rx="12" fill="#ce93d8" />
+            <rect x="36" y="62" width="88" height="12" rx="6" fill="#ba68c8" />
+            <ellipse cx="40" cy="98" rx="8" ry="6" fill="#fff9fb" />
+            <ellipse cx="65" cy="98" rx="8" ry="6" fill="#fff9fb" />
+            <ellipse cx="90" cy="98" rx="8" ry="6" fill="#fff9fb" />
+            <ellipse cx="115" cy="98" rx="8" ry="6" fill="#fff9fb" />
+            <ellipse cx="50" cy="62" rx="7" ry="5" fill="#fff9fb" />
+            <ellipse cx="72" cy="62" rx="7" ry="5" fill="#fff9fb" />
+            <ellipse cx="94" cy="62" rx="7" ry="5" fill="#fff9fb" />
+            <ellipse cx="116" cy="62" rx="7" ry="5" fill="#fff9fb" />
+            <rect x="60" y="40" width="8" height="24" rx="4" fill="#fff176" />
+            <rect x="92" y="40" width="8" height="24" rx="4" fill="#80deea" />
+            <ellipse class="flame f1" cx="64" cy="37" rx="5" ry="7" fill="#ff8f00" />
+            <ellipse class="flame f2" cx="96" cy="37" rx="5" ry="7" fill="#ff8f00" />
+            <ellipse class="flame-inner f1" cx="64" cy="38" rx="2.5" ry="4" fill="#fff176" />
+            <ellipse class="flame-inner f2" cx="96" cy="38" rx="2.5" ry="4" fill="#fff176" />
+            <circle cx="42" cy="116" r="5" fill="#fff176" />
+            <circle cx="62" cy="120" r="4" fill="#80deea" />
+            <circle cx="82" cy="116" r="5" fill="#fff176" />
+            <circle cx="102" cy="120" r="4" fill="#f8bbd0" />
+            <circle cx="122" cy="116" r="5" fill="#fff176" />
+            <text x="56" y="86" font-size="12" text-anchor="middle">⭐</text>
+            <text x="80" y="82" font-size="14" text-anchor="middle">✨</text>
+            <text x="104" y="86" font-size="12" text-anchor="middle">⭐</text>
+          </svg>
+        </div>
+      </div>
+
+      <p class="bday-msg">
+        Today is <em>all about you</em>, Happy 24th Birthday, my baby girl. I hope this new chapter fills your life with
+        endless joy, good health, success in your life and great beautiful memories. You deserve every bit of happiness
+        in the world and yess you deserve even more cause I know how hard you try. And I hope one day I’ll be there for
+        you to celebrate all of your birthdays by your side and spend time together soon. No matter how many miles
+        separate us, my heart is always with you and thank you for bringing so much happiness into my life just by being
+        you. Im wishing you all the best I can and I pray for you to get the best in your life and everything you want.
+        I’ll be there for you even in your hard times and againnn Happy birthday, my beloved.&nbsp;🌟
+      </p>
+
+      <div class="bday-tags">
+        <span class="tag">🎂 Another year of you</span>
+        <span class="tag">✨ More beautiful than ever</span>
+        <span class="tag">💗 Forever my fav person</span>
+      </div>
+
+      <div class="bday-cta-wrap">
+        <p class="bday-cta-text">
+          Pssttt... birthday girl, I have a little secret waiting for you&nbsp;👀💌
+        </p>
+        <button class="btn btn-bday" onclick="goTo('p1')">
+          <span>Ooh, what is it?? 🥰</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       PAGE 1 — Heyy Cuttie Pie
+       Photo: cat with pink bow (page1 / cat_bow.png)
+  ══════════════════════════════ -->
+  <section class="page" id="p1">
+    <button class="back-btn" onclick="goTo('p0')">← Back</button>
+    <span class="deco tl"><img src="images/ribbon.png" class="deco-ribbon" alt=""></span>
+    <span class="deco br">🌷</span>
+    <div class="card">
+      <!-- Sticker-style: no circle crop, floats freely -->
+      <div class="sticker-wrap">
+        <img src="images/cat_bow.png" alt="cuttie pie" class="sticker-img" />
+      </div>
+      <h1 class="display">Heyy Cuttie Pie</h1>
+      <div class="rule"><span>🌸</span></div>
+      <p class="sub">I have something to tell you hehe</p>
+      <button class="btn" onclick="goTo('p2')">Click here &nbsp;💕</button>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       PAGE 2 — So interested?
+       Photo: golden retriever side view (dog_side)
+  ══════════════════════════════ -->
+  <section class="page" id="p2">
+    <button class="back-btn" onclick="goTo('p1')">← Back</button>
+    <div class="card">
+      <div class="photo-ring">
+        <img src="images/dog_side.jpg" alt="dog" class="photo"
+          onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'photo-fallback',textContent:'🐕'}))" />
+      </div>
+      <h1 class="display">Ahhhh......</h1>
+      <div class="rule"><span>🌹</span></div>
+      <p class="sub">So you interested huh??</p>
+      <button class="btn" onclick="goTo('p3')">Click for the interesting part hehe &nbsp;🌷</button>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       PAGE 3 — YES / NO
+       Photo: cat with cap & bouquet (cat_cap.png)
+  ══════════════════════════════ -->
+  <section class="page" id="p3">
+    <button class="back-btn" onclick="goTo('p2')">← Back</button>
+    <span class="deco tl">🌹</span>
+    <span class="deco tr">💗</span>
+    <span class="deco bl">💗</span>
+    <span class="deco br">🌹</span>
+    <div class="card">
+      <div class="sticker-wrap">
+        <img src="images/cat_cap.png" alt="cat with bouquet" class="sticker-img" />
+      </div>
+      <h1 class="display">Can you please be<br>my baby girl</h1>
+      <div class="rule"><span>💗</span></div>
+      <p class="sub">Foreverrrrrrrrrrr?</p>
+      <div class="btn-row">
+        <button class="btn" id="yesBtn" onclick="goTo('p5')">YES &nbsp;💕</button>
+        <button class="btn btn-ghost" id="noBtn" onclick="handleNo()">NO</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       PAGE 4 — Please say yes
+       Photo: golden retriever side (dog_side — peeking)
+  ══════════════════════════════ -->
+  <section class="page" id="p4">
+    <div class="card">
+      <div class="photo-ring">
+        <img src="images/dog_side.jpg" alt="dog" class="photo"
+          onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'photo-fallback',textContent:'🐕'}))" />
+      </div>
+      <h1 class="display">Heyyy why youu keeep<br>clickinggg noooooo 🥺</h1>
+      <div class="rule"><span>🌹</span></div>
+      <p class="sub">please sayy yesss,<br>im alreadyyy falling hard for youuuu</p>
+      <button class="btn pulse" onclick="goTo('p5')">YES &nbsp;💕</button>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       PAGE 5 — I knew it!
+       Photo: white dog with tulips (dog_tulip)
+  ══════════════════════════════ -->
+  <section class="page" id="p5">
+    <div class="card">
+      <div class="photo-ring">
+        <img src="images/dog_tulip.jpg" alt="dog with tulips" class="photo"
+          onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'photo-fallback',textContent:'🐶'}))" />
+      </div>
+      <h1 class="display">whyy you taking so longg<br>baby girl.....</h1>
+      <div class="rule"><span>💗</span></div>
+      <p class="sub">I knew it you will say yesss hehehe</p>
+      <p class="hint">here is my love letter for youuuu →</p>
+      <button class="btn" onclick="goTo('p6')">Open my love letter &nbsp;💌</button>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       PAGE 6 — Envelope
+  ══════════════════════════════ -->
+  <section class="page" id="p6">
+    <button class="back-btn" onclick="goTo('p5')">← Back</button>
+    <span class="deco tl">🌷</span>
+    <span class="deco tr">🌹</span>
+    <span class="deco bl">🌹</span>
+    <span class="deco br">🌷</span>
+    <div class="card">
+      <h1 class="display">Open this letter</h1>
+      <div class="rule"><span>💌</span></div>
+      <p class="sub">from the bottom of my heart for you</p>
+
+      <button class="env-btn" onclick="openLetter()" aria-label="Open love letter">
+        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" class="env-svg">
+          <rect x="4" y="4" width="192" height="132" rx="14" fill="#fff0f5" stroke="#f48fb1" stroke-width="2.5" />
+          <path d="M4 18 L100 80 L196 18" fill="none" stroke="#f48fb1" stroke-width="2" />
+          <path d="M4 136 L70 78 M196 136 L130 78" fill="none" stroke="#f4c2d3" stroke-width="1.5" />
+          <circle cx="100" cy="68" r="22" fill="#f8bbd0" stroke="#c2185b" stroke-width="2" />
+          <text x="100" y="76" text-anchor="middle" font-size="22">❤️</text>
+        </svg>
+      </button>
+      <p class="hint anim-pulse">✨ Click to open ✨</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       LOVE LETTER POPUP
+  ══════════════════════════════ -->
+  <div id="letter-overlay" role="dialog" aria-modal="true" aria-label="Love Letter" onclick="backdropClose(event)">
+    <div class="letter-box">
+      <button class="letter-close" onclick="closeLetter()" aria-label="Close">✕</button>
+      <div class="letter-header">
+        <span class="letter-stamp">💌</span>
+        <h2 class="letter-title">To My Dearest</h2>
+        <div class="letter-rule"></div>
+      </div>
+      <div class="letter-scroll">
+        <p class="letter-body">
+          ✏️ Dear My Little Princess…….
+
+          I don’t really know if there will ever be enough words to explain what you really meant to me, but I gotta
+          tell you this just in the right time on your special day that my heart has been holding onto for agesss.
+
+          <br><br>
+          Before you came into my life, I never thought that I could be loved like this and I could be feel safe, comfy
+          and stay as who I am. I could never think that someone from thousands miles away could make me feel safe
+          around her yet somehow, you did baby girl. You always check on me when I am feel upset, taking care of me and
+          you teach and lead me when I was doing mistake or treat you in a wrong way. And im really sorry for all those
+          mistakes that I made on you. For those precious little things that you made for me, made me realise how
+          certain I am about you and to be in love with you and love you. 🌸
+          <br><br>
+          I see the future with you baby girl. I was never felt like this before. I can’t stop thinking about you all
+          the time. You alwaysss on my mind for day and night and I guess this gonna be last forever. I could see the
+          future us going through all those hard things that we will face against. As you told me when we fight like “
+          It is not the fight between us, it’s all about the problem that we have to face and solve together”. And I
+          realise the things you said and yess you are right baby girl. You mean a lot to me, you make me to be a better
+          man and I will try to be the best version for you every single time.
+          🌙
+          <br><br>
+          I know there is a distance between us but I want to fight this battle with you and stay with you. Distance
+          will be gone and I will try to be with you in the future. You know it’s hard sometimes that I want to hold
+          your hands, play with your fingers, and smell your hair, kiss with you, hug with youuu and I want to look into
+          your beautiful eyesss which is the most favourite thing for me. i will do all those things one day when we
+          finally meet in person. I’ll take care of you and stay by your side whatever it takes. Even the world against
+          you, I will be by your side, hold your hand and face together. 🌷
+          <br><br>
+          I didn’t fall in love with you cause you’re perfect. Everyone has their dark sides. Just kidding baby xD, you
+          are perfect hehehehe. I fell in love with you cause you make my heart feel like home, your smile calms me,
+          your laugh becomes my favourite sound and your kindness reminds me that love still exists in its purest form.
+          <br>
+          Soo, today, Im not just confessing my love for you and also asking you to spend the rest of your life with me
+          as I really do. Please let me be the one who stands beside you with up and down through your life, cry on my
+          shoulders when the days are heavy. I will always be there for you my princess. I love you sooo much baby. if
+          there is a word that I can say more effectively than I love you then I would. I will love you for the rest of
+          my life. I adore you, please be my babyyy forever and everrr. Arrrrbwrrrrrrrrr heeehee. I know this might be
+          the longest one that I ever written for someone and I did cause you are the precious one for you and I can’t
+          loose youuu. I’ll love you in every universe.
+        </p>
+        <p class="letter-sig">The letter from yours future one hehe&nbsp;💗</p>
+        <div class="letter-flowers"> 🌷 🌷 🌷 🌷 </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
