@@ -846,6 +846,30 @@ html, body {
   display: block;
 }
 
+.music-btn{
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:9999;
+
+    background:#ff7eb3;
+    color:white;
+    border:none;
+    border-radius:30px;
+
+    padding:12px 20px;
+    font-size:16px;
+    cursor:pointer;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.25);
+
+    transition:.3s;
+}
+
+.music-btn:hover{
+    transform:scale(1.08);
+    background:#ff4d94;
+}
 /* ─── Regular circle photo ring (pages 2, 4, 5) ─── */
 /* already defined above — no change needed */
 
